@@ -1,0 +1,12 @@
+Name:siddu	last name:yepuri	age:21	salary:20000
+Address:
+street:5	number:9505866215	postal code:508248	state:Telangana
+Name:pavan	last name:kaspa	age:23	salary:25000
+Address:
+street:4	number:9346021557	postal code:505003	state:ANdhra
+Name:tharun	last name:sankula	age:25	salary:30000
+Address:
+street:10	number:8688558769	postal code:505040	state:Andhraoradefeh
+Name:vamshi	last name:pagadala	age:23	salary:2000000
+Address:
+street:44	number:8501029752	postal code:508240	state:Telanfana

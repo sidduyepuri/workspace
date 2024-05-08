@@ -1,0 +1,4 @@
+Name:siddu	last name:yepuri	age:21	salary:20000
+Name:pavan	last name:kaspa	age:23	salary:25000
+Name:tharun	last name:sankula	age:25	salary:30000
+Name:vamshi	last name:pagadala	age:23	salary:2000000

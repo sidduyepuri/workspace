@@ -1,0 +1,4 @@
+Name:siddu	age:21	salary:20000
+Name:pavan	age:23	salary:25000
+Name:tharun	age:25	salary:30000
+Name:vamshi	age:23	salary:2000000
