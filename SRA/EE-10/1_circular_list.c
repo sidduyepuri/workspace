@@ -73,10 +73,9 @@ void printClist(clist *last, const clist *head)
     last = last->next;
     
     // Recursive call until last node is reached
-    while (last->next != head)
+    if (last->next != head)
     {
         printClist(last, head);
-        break;
     }
     
     // Print the number in the current node
