@@ -1,0 +1,1 @@
+cmd_/home/siddu/platform/cross-compiler/dt-pcd/pcd_sysfs/pcd_sysfs.o := arm-linux-gnueabihf-ld  -EL    -r -o /home/siddu/platform/cross-compiler/dt-pcd/pcd_sysfs/pcd_sysfs.o /home/siddu/platform/cross-compiler/dt-pcd/pcd_sysfs/pcd_platform_driver_sysfs.o /home/siddu/platform/cross-compiler/dt-pcd/pcd_sysfs/pcd_syscalls.o

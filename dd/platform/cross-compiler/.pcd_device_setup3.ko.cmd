@@ -1,0 +1,1 @@
+cmd_/home/siddu/platform/cross-compiler/pcd_device_setup3.ko := arm-linux-gnueabihf-ld -r  -EL  --build-id  -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds -o /home/siddu/platform/cross-compiler/pcd_device_setup3.ko /home/siddu/platform/cross-compiler/pcd_device_setup3.o /home/siddu/platform/cross-compiler/pcd_device_setup3.mod.o;  true
