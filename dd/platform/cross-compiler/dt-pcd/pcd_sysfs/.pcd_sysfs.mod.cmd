@@ -1,1 +1,0 @@
-cmd_/home/siddu/platform/cross-compiler/dt-pcd/pcd_sysfs/pcd_sysfs.mod := { echo  /home/siddu/platform/cross-compiler/dt-pcd/pcd_sysfs/pcd_platform_driver_sysfs.o /home/siddu/platform/cross-compiler/dt-pcd/pcd_sysfs/pcd_syscalls.o;  echo; } > /home/siddu/platform/cross-compiler/dt-pcd/pcd_sysfs/pcd_sysfs.mod
