@@ -1,0 +1,53 @@
+# Makefile2 for building shared library libmylib.so and the application myapp
+
+all: myapp
+
+# Which compiler
+CC = gcc
+
+# Options for development
+CFLAGS = -fPIC -Wall -g
+
+# Local Libraries
+MYLIB = libmylib.so
+LIB_MAJOR = 5
+LIB_MINOR = 1
+LIB_RELEASE = 10
+LIB_NAME = $(MYLIB).$(LIB_MAJOR).$(LIB_MINOR).$(LIB_RELEASE)
+
+DYNLINKFLAGS = -shared -Wl,-soname,$(MYLIB).$(LIB_MAJOR)
+
+myapp: main.o $(MYLIB)
+	$(CC) -o myapp main.o -L. -lmylib
+
+$(MYLIB): hello.o here.o bye.o
+	$(CC) $(DYNLINKFLAGS) -o $(LIB_NAME) hello.o here.o bye.o
+	ln -sf $(LIB_NAME) $(MYLIB).$(LIB_MAJOR)
+	ln -sf $(MYLIB).$(LIB_MAJOR) $(MYLIB)
+
+main.o: main.c mylib.h
+	$(CC) $(C isFLAGS) -c main.c
+
+hello.o: hello.c mylib.h
+	$(CC) $(CFLAGS) -c hello.c
+
+here.o: here.c mylib.h
+	$(CC) $(CFLAGS) -c here.c
+
+bye.o: bye.c mylib.h
+	$(CC) $(CFLAGS) -c bye.c
+
+clean:
+	-rm -f main.o hello.o here.o bye.o $(MYLIB)*
+
+install: myapp
+	@if [ -d $(INSTDIR) ]; \
+	then \
+		cp myapp $(INSTDIR); \
+		chmod a+x $(INSTDIR)/myapp; \
+		chmod og-w $(INSTDIR)/myapp; \
+		echo "Installed in $(INSTDIR)"; \
+	else \
+		echo "Sorry, $(INSTDIR) does not exist"; \
+	fi
+

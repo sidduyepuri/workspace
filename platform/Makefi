@@ -1,0 +1,11 @@
+#obj-m += pcd_device_setup.o
+obj-m += pcd_device_setup3.o
+#obj-m += pcd_device_setup.o
+obj-m += pcd_platform_driver3.o
+
+PWD :=$(CURDIR)
+
+all:
+	make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -C /home/siddu/bbb_linux/linux M=$(PWD) modules
+clean:
+	make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -C /home/siddu/bbb_linux/linux M=$(PWD) clean

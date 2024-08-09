@@ -1,0 +1,35 @@
+#obj-m +=hello1.o
+obj-m +=hello2.o
+#obj-m +=task2.o
+#obj-m +=task3.o
+#obj-m +=task4.o
+#obj-m +=task5.o
+#obj-m +=task6.o
+#obj-m +=task7_Sorting.o
+#obj-m +=random_data.o
+#obj-m +=random_int.o
+#obj-m +=task8.o
+#obj-m +=task9_LinkedList_Time.o
+#obj-m +=kmalloc.o
+#obj-m +=linklist.o
+#obj-m +=task10.o
+#obj-m +=task11.o
+#obj-m +=task12.o
+#obj-m +=task14.o
+#obj-m +=task15_1.o
+#obj-m +=task15_2.o
+#obj-m +=task16.o
+#obj-m +=task17.o
+#obj-m +=read5.o
+#obj-m +=panic_module.o
+#obj-m +=thread_module2.o
+
+
+PWD :=$(CURDIR)
+
+all:
+	#make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+	make -C /home/siddu/src/linux M=$(PWD) modules
+clean:
+	#make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	make -C /home/siddu/src/linux M=$(PWD) clean

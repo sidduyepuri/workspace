@@ -1,0 +1,1 @@
+savedcmd_/home/siddu/platform/com_org/mem_io/hello3.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/siddu/platform/com_org/mem_io/hello3.ko /home/siddu/platform/com_org/mem_io/hello3.o /home/siddu/platform/com_org/mem_io/hello3.mod.o

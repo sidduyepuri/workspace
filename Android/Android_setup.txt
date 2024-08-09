@@ -1,0 +1,67 @@
+Setup Development Machine :-
+----- ----------- -------
+	Minimum Hardware Requirements:
+		Ubuntu Version : Ubuntu 16.04 LTS
+		Disk Space : 250GB 
+		RAM : 16GBCPU 
+		Cores : 8 Cores(Minimum)
+	* Follow below mentioned steps 
+	-> Update package list by running below command
+		$ sudo apt update && sudo apt upgrade 
+	-> Install below packages which are required for the build system
+		$ sudo apt install git repo python2.7 gcc g++ make libncurses5 lib32stdc++6 zlib1g:i386 libxml2-utils libssl-dev m4 openjdk-8-jdk openjdk-8-jre adb fastboot
+	-> Reconfigure bash as default shell
+		$ sudo ln -sf /bin/bash /bin/sh 
+Clone Source Code :-
+-----------------
+	* Use below mentioned steps to clone the source
+	-> Init repo to clone the source code
+		$ mkdir sda660 && cd sda660
+		$ repo init -u https://git.codelinaro.org/clo/la/platform/manifest.git -b release -m LA.UM.7.2.c25-09100-sdm660.0.xml --repo-url=https://git.codelinaro.org/clo/tools/repo.git --repo-branch=qc-stable
+		$ repo sync –j$(nproc)
+	-> Get the eragon660_and-9-0-0_ei-2-0-0.zip package from EIC support center  and extract it
+		$ cd ~/
+		$ wget https://supportcenter.einfochips.com/download/505/einfochips-660/8071/eragon660_and-9-0-0_ei-2-0-0-2.zip
+		$ unzip eragon660_and-9-0-0_ei-2-0-0-2.zip
+	-> Extract vendor proprietary code and apply BSP patches provided by eic
+		$ cd sda660
+		$ tar –xvzf ~/ERAGON660_AND.9.0.0_EI.2.0.0/source/proprietary.tar.gz vendor/
+		$ tar –xvzf ~/ERAGON660_AND.9.0.0_EI.2.0.0/source/ patches.tar.gz  .
+Compile Source Code :- 
+-------------------
+	* Apply BSP patches provided in eic package
+		$ cd ~/sda660/patches/<path_to_patch_location>
+		$ git am ~/sda660/patches/<path_to_patch_location>/<patch_name>.patch
+	* Ensure all patches are applied correctly, use below command to compile the source code
+		$ cd sda660
+		$ source build/envsetup.sh
+		$ lunch sdm660_64-userdebug
+	* All compiled AOSP image’s will be located here (system,vendor,boot,persist,userdata)
+		$ cd sda660/out/target/product/sdm660_64
+		$ ls -l *.img
+Note: Apply all patches manually according to their repo locations, or use Eragon660_build.sh from the EIC package to clone, apply patches, and compile the source code automatically.
+Flash Compiled Images :-
+---------------------
+There are different ways to flash images on to the device and ensure all required drivers are installed on the host machine for flashing Fastboot or QFIL, Reference documents on slide no 9
+->Fastboot:
+  -------
+	This tool let you connect your development workstation directly to your Android-powered device so you can install (flash) Android and test your OS and app changes
+	-> To boot device in fastboot mode hold power and volume down button or use adb command
+		$ adb reboot bootloader <boot_device_to_fastboot>
+		# use below command to flash via fastboot 
+		$ fastboot flash -S 256M  boot_a boot.img
+		$ fastboot flash -S 256M  vendor_a vendor.img
+		$ fastboot flash -S 256M  system_a system.img
+		$ fastboot flash -S 256M  persist persist.img
+		$ fastboot flash -S 256M  userdata userdata.img
+		$ fastboot oem select-display-panel osd_otm1901a_1080p_video
+Validate Flashed Images :-
+-----------------------
+After all images flashed without any errors ,those images need to be validated by using below methods.
+	* Device needs to boot default Android Home Screen (if device has display peripheral)
+	* Use Vysor or Scrcpy tools (No display peripheral).
+Reference Guides :-
+----------------
+ERAGON660-AND-9-0-0-EI-2-0-0-Software-User-Guide
+ERAGON660-AND-9-0-0-EI-2-0-0-Software-Release-Notes
+
